@@ -21,12 +21,12 @@
                 <th></th>
             </tr>
             <tr th:each="terri : ${listaTerri}">
-                <td th:text="${info.index + 1}"></td>
-                <td th:text="${shipper.companyname}"></td>
-                <td th:text="${shipper.phone}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/shipper/edit' + '?id=' + ${shipper.shipperId}}">Editar</a>
+                <td th:text="${terri.id}"></td>
+                <td th:text="${terri.territorydescription}"></td>
+                <td th:text="${terri.regionid}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/terri/edit' + '?id=' + ${terri.id}}">Editar</a>
                 </td>
-                <td><a class="btn btn-danger" th:href="@{'/shipper/delete' + '?id=' + ${shipper.shipperId}}">Borrar</a>
+                <td><a class="btn btn-danger" th:href="@{'/terri/delete' + '?id=' + ${terri.id}}">Borrar</a>
                 </td>
             </tr>
         </table>
