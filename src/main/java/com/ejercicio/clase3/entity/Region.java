@@ -1,9 +1,18 @@
 package com.ejercicio.clase3.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "region")
 public class Region {
 
+    @Id
     private int regionid;
-    private String regiondescriotion;
+    @Column(nullable = false)
+    private String regiondescription;
 
     public int getRegionid() {
         return regionid;
@@ -13,11 +22,11 @@ public class Region {
         this.regionid = regionid;
     }
 
-    public String getRegiondescriotion() {
-        return regiondescriotion;
+    public String getRegiondescription() {
+        return regiondescription;
     }
 
-    public void setRegiondescriotion(String regiondescriotion) {
-        this.regiondescriotion = regiondescriotion;
+    public void setRegiondescription(String regiondescriotion) {
+        this.regiondescription = regiondescriotion;
     }
 }
