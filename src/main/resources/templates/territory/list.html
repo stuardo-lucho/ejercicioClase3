@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8">
         <title>Lista Territorios</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+        <script th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
+        <script th:src="@{/js/popper.min.js}" ></script>
+        <script th:src="@{/js/bootstrap.min.js}" ></script>
     </head>
     <body class="container">
         <h2>Lista Territorios</h2>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/shipper/new'}">Nuevo Territorio</a>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/territory/nuevo'}">Nuevo Territorio</a>
         <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
         <table class="table table-sm">
             <tr>
@@ -23,10 +23,10 @@
             <tr th:each="terri : ${listaTerri}">
                 <td th:text="${terri.id}"></td>
                 <td th:text="${terri.territorydescription}"></td>
-                <td th:text="${terri.regionid}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/terri/edit' + '?id=' + ${terri.id}}">Editar</a>
+                <td th:each="region : ${listaRegions}" th:if="${region.regionid == terri.regionid}" th:text="${region.regiondescription}"></td>
+                <td><a class="btn btn-primary" th:href="@{'/territory/editar' + '?id=' + ${terri.id}}">Editar</a>
                 </td>
-                <td><a class="btn btn-danger" th:href="@{'/terri/delete' + '?id=' + ${terri.id}}">Borrar</a>
+                <td><a class="btn btn-danger" th:href="@{'/territory/delete' + '?id=' + ${terri.id}}">Borrar</a>
                 </td>
             </tr>
         </table>

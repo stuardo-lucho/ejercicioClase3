@@ -2,34 +2,35 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <title>Nuevo Territory</title>
+        <title>Editar Territory</title>
         <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
         <script th:src="@{/js/jquery-3.4.1.slim.min.js}"></script>
         <script th:src="@{/js/popper.min.js}"></script>
         <script th:src="@{/js/bootstrap.min.js}"></script>
     </head>
     <body class="container">
-        <h2>Nuevo Territory</h2>
+        <h2>Editar Territory</h2>
         <hr/>
         <form method="post" th:action="@{'/territory/guardar'}">
             <div class="form-group">
                 <label for="territoryID">ID del territory</label>
-                <input required name="id" type="text" class="form-control" id="territoryID" placeholder="Número de 5 dígitos">
+                <input readonly name="id" type="text" class="form-control" id="territoryID" th:value="${territory.id}">
             </div>
             <div class="form-group">
                 <label for="territorydescription">Descripción del territorio</label>
-                <input required name="territorydescription" type="text" class="form-control" id="territorydescription">
+                <input required name="territorydescription" type="text" class="form-control" id="territorydescription" th:value="${territory.territorydescription}">
             </div>
             <div class="form-group">
                 <label for="region">Región</label>
                 <select name="regionid" class="form-control" id="region">
                     <option th:each="region: ${listaRegions}"
                             th:text="${region.regiondescription}"
-                            th:value="${region.regionid}"></option>
+                            th:value="${region.regionid}"
+                    th:selected="${region.regionid == territory.regionid}"></option>
                 </select>
             </div>
             <a th:href="@{'/territory'}" class="btn btn-danger">Cancelar</a>
-            <button type="submit" class="btn btn-primary">Registrar</button>
+            <button type="submit" class="btn btn-primary">Actualizar</button>
         </form>
     </body>
 </html>
